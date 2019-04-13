@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+</style>
+
+  Welcome to the wonderful collective for wrestling photos. Upload your own and I'll see if they make the cut. 
+
+<br />
+<hr />
+<div class="gallery">
+    <a target="_blank" href="/static/images/1.jpg">
+      <img src="static/images/1.jpg" width="600" height="400">
+    </a>
+<div class="desc">4 Stars</div>
+</div>
+<div class="gallery">
+    <a target="_blank" href="/static/images/2.jpg">
+      <img src="static/images/2.jpg" width="600" height="400">
+    </a>
+<div class="desc">3 Stars</div>
+</div>
+<div class="gallery">
+    <a target="_blank" href="/static/images/3.png">
+      <img src="static/images/3.png" width="600" height="400">
+    </a>
+<div class="desc">3 Stars</div>
+</div>
+<div class="gallery">
+    <a target="_blank" href="/static/images/4.jpg">
+      <img src="static/images/4.jpg" width="600" height="400">
+    </a>
+<div class="desc">4 Stars</div>
+</div>
+<div class="gallery">
+    <a target="_blank" href="/static/images/5.jpg">
+      <img src="static/images/5.jpg" width="600" height="400">
+    </a>
+<div class="desc">5 Stars</div>
+</div>
+{% endblock %}

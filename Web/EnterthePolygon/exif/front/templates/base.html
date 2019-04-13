@@ -1,0 +1,24 @@
+<html>
+<body>
+
+   <link rel="stylesheet" href="/static/w3.css">
+   <div id="header">
+      <div class="w3-bar w3-black">
+         <a href="{% url 'index' %}" class="w3-bar-item w3-button">Home</a>
+         <a href="{% url 'upload' %}" class="w3-bar-item w3-button">Image Proc</a>
+         {% if user.is_authenticated %}
+            <a href="{% url 'profile' %}" class="w3-bar-item w3-button w3-right">{{ user.get_username }}</a>
+            <a href="{% url 'logout' %}" class="w3-bar-item w3-button w3-right">Logout</a>
+         {% else %}
+            <a href="{% url 'login' %}" name="login" class="w3-bar-item w3-button w3-right">Login</a>
+            <a href="{% url 'register' %}" class="w3-bar-item w3-button w3-right">Register</a>
+         {% endif %}
+      </div>
+   </div>
+
+
+   <br />
+   {% block content %}
+   {% endblock %}
+</body>
+</html

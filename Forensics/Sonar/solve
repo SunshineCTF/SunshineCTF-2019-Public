@@ -1,0 +1,5 @@
+#!/bin/bash
+
+output=$(tshark -r ./found.pcapng.gz -2Y "icmp.resp_in" |sed -n -e 's/^.*ICMP //p' |sed  's/Echo.*//' | xargs python solve.py |uniq | tr '\n' ' ')
+without_begin="${output#* }"
+echo $without_begin | sed 's/ //g'

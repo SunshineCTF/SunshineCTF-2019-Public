@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+Upload a file, a moderator will review your upload soon after.
+<br />
+{{ form.errors }}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="ifile">
+    <button type="submit">Upload</button>
+  </form>
+{% endblock %}

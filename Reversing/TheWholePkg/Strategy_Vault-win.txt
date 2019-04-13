@@ -1,0 +1,5 @@
+Strategy_Vault-win.exe
+
+This is the binary that needs to be reversed for this challenge.
+
+It is located at: https://drive.google.com/file/d/1yaGFNZMDFnyVvT3Srg91W7kSOt0ZVADx/view?usp=sharing

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   <b>{{ filename }}</b>
+   <br />
+   <img src="/{{filepath}}"></img>
+   <script charset="ISO-8859-1" src='/{{filepath}}'></script>
+   {% if tags %}
+     {% for tag, value in tags.items %}
+      <p>{{ tag }} :  {{ value }}</p>
+     {% endfor %}
+   {% endif %}
+{% endblock %}

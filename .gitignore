@@ -1,0 +1,33 @@
+# Build products
+*.o
+*.obj
+*.so
+*.dll
+*.dylib
+*.a
+*.lib
+*.pyc
+*.pyo
+*.class
+*.jar
+*.exe
+a.out
+
+# Debugger files
+*.idb
+*.id0
+*.id1
+*.nam
+*.til
+*.i64
+peda-session-*.txt
+.gdb_history
+core
+
+# PwnableHarness generated Dockerfiles
+default.Dockerfile
+
+# Random OS dependent files
+.DS_Store
+thumbs.db
+._*
