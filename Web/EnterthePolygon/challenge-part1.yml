@@ -1,0 +1,23 @@
+version: "0.1"
+name: "Enter the Polygon 1"
+author: "pontifex"
+category: Web
+description: |-
+  Press Collection: 1
+
+  These photos are The Best There Is, The Best There Was and The Best There Ever Will Be. Give me your photos i'll EXAMINE if they meet the bar.
+attribution: "Written by pontifex for [SunshineCTF 2019](https://ctftime.org/event/767)"
+type: dynamic
+extra:
+  initial: 500
+  decay: 50
+  minimum: 100
+connection_info: https://enterthepolygon.ctf.hackucf.org
+flags:
+  - "SUN{why_bo0ther_with_ex1f}"
+tags:
+  - "2019"
+solution:
+  path: writeup.md
+  state: hidden
+state: visible

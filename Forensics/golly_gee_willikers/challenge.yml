@@ -1,0 +1,22 @@
+version: "0.1"
+name: "Golly Gee Willikers"
+author: "kcolley"
+category: Forensics
+description: |-
+  Someone sent me this weird file and I don't understand it. It's freaking me out, this isn't a game! Please help me figure out what's in this file.
+attribution: "Written by kcolley for [SunshineCTF 2019](https://ctftime.org/event/767)"
+type: dynamic
+extra:
+  initial: 500
+  decay: 50
+  minimum: 100
+flags:
+  - "sun{th1s_w0nt_last}"
+tags:
+  - "2019"
+files:
+  - attachments/golly_gee_willikers.txt
+solution:
+  path: writeup.md
+  state: hidden
+state: visible

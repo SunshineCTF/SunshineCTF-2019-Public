@@ -1,0 +1,23 @@
+version: "0.1"
+name: "Enter the Polygon 2"
+author: "pontifex"
+category: Web
+description: |-
+  Press Collection: 2
+
+  The Undertaker is piledriving our old authz for some J. You going to need to finish the first challenege if you wanna smell what the rock is cooking.
+attribution: "Written by pontifex for [SunshineCTF 2019](https://ctftime.org/event/767)"
+type: dynamic
+extra:
+  initial: 500
+  decay: 50
+  minimum: 100
+connection_info: https://enterthepolygon.ctf.hackucf.org
+flags:
+  - "SUN{Can_Y0U_smell_JWT?}"
+tags:
+  - "2019"
+solution:
+  path: writeup.md
+  state: hidden
+state: visible

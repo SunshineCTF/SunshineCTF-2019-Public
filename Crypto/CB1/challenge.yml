@@ -1,0 +1,28 @@
+version: "0.1"
+name: "CB1"
+author: "leviathan"
+category: Crypto
+description: |-
+  # CB1
+
+  We picked up a new numbers station that's been active in the shortwave bands. We need to figure out how to crack his code.
+
+  Here's an example file, crack the cipher and send us the plaintext message.
+
+  NOTE: The flag format will not match the sun{...} format.
+
+  Example file: [download](https://drive.google.com/open?id=17sa6vjZuTrzY8hSkFDE3gthx0F7KTxUC)
+attribution: "Written by leviathan for [SunshineCTF 2019](https://ctftime.org/event/767)"
+type: dynamic
+extra:
+  initial: 500
+  decay: 50
+  minimum: 100
+flags:
+  - "bewaretheidesofmarch"
+tags:
+  - "2019"
+solution:
+  path: writeup.md
+  state: hidden
+state: visible

@@ -1,9 +1,3 @@
-DOCKER_IMAGE := namegen
-DOCKER_IMAGE_CUSTOM := 1
-DOCKER_BUILD_ARGS := --build-arg "FLAG=`cat $(DIR)/flag.txt`"
-DOCKER_PORT_ARGS := -p 127.0.0.1:19507:80
-DOCKER_RUN_ARGS := -v /var/run
-
-PUBLISH := port.txt
-
-$(call nginx_conf,$(DIR)/nginx.conf)
+# docker-compose web challenge (PHP/Apache; no build product, so this Build.mk only
+# registers the check). `pwnmake check` starts it, runs the solver, and tears it down.
+$(call ctf_check_web,$(DIR),19302,wrestlernamegenerator.ctf.hackucf.org,python3 solve.py)

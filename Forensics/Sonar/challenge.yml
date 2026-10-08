@@ -1,0 +1,25 @@
+version: "0.1"
+name: "Sonar"
+author: "aleccoder"
+category: Forensics
+description: |-
+  # Sonar
+
+  We think a wrestler called Sonar wants to rebrand and go to a competitor. We have to reason to believe that he was sending them his new wrestling name, lucky that our next gen firewall was capturing the traffic during the time where he sent that info out. Unfortunately our staff cannot make heads or tails of it. Mind looking at it for us?
+
+  ## Files Included
+  - pcap ([download](https://drive.google.com/file/d/1SIBDhF3ULda1ai_Wj8WWwM9pmd0Ys6U-/view?usp=sharing))
+attribution: "Written by aleccoder for [SunshineCTF 2019](https://ctftime.org/event/767)"
+type: dynamic
+extra:
+  initial: 500
+  decay: 50
+  minimum: 100
+flags:
+  - "sun{7UcHa_L1Br3}"
+tags:
+  - "2019"
+solution:
+  path: writeup.md
+  state: hidden
+state: visible

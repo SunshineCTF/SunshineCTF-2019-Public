@@ -1,7 +1,9 @@
 # CB2
 
-This challenge is a mid level crypto challenge, around 100 points, that is part of a series of challenges. It requires us to host a .wav file.
+This challenge is a mid level crypto challenge that is part of a series of challenges. It requires us to host a .wav file.
 
-## Solution
+See [writeup.md](writeup.md) for the solution.
 
-Basic 25 character key length Polybius cipher. The key is made in the classic way, by filling in the keyword "clarinet" and then all remaining letters (i/j are treated as the same letter). Then this key can be used to decrypt the ciphertext by hand or with a solver.
+## Not on CTFd
+
+This challenge has no `challenge.yml`, so it isn't uploaded to CTFd: its only handout was a Google Drive file that no longer exists.

@@ -1,0 +1,23 @@
+version: "0.1"
+name: "Entry Exam"
+author: "dmaria"
+category: Scripting
+description: |-
+  # Entry Exam
+
+  I heard the Hart Foundation is accepting applications, see if you have what it takes by completing their entry exam.
+attribution: "Written by dmaria for [SunshineCTF 2019](https://ctftime.org/event/767)"
+type: dynamic
+extra:
+  initial: 500
+  decay: 50
+  minimum: 100
+connection_info: https://entryexam.ctf.hackucf.org
+flags:
+  - "sun{7h3_b357_7h3r3_15_7h3_b357_7h3r3_w45_7h3_b357_7h3r3_3v3r_w1ll_b3}"
+tags:
+  - "2019"
+solution:
+  path: writeup.md
+  state: hidden
+state: visible

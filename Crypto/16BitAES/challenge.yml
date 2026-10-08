@@ -1,0 +1,23 @@
+version: "0.1"
+name: "16-bit AES"
+author: "Hack@UCF"
+category: Crypto
+description: |-
+  # 16-bit AES
+
+  Why so small?
+attribution: "From [SunshineCTF 2019](https://ctftime.org/event/767)"
+type: dynamic
+extra:
+  initial: 500
+  decay: 50
+  minimum: 100
+connection_info: nc ctf.hackucf.org 19401
+flags:
+  - "sun{Who_kn3w_A3$_cou1d_be_s0_vulner8ble?}"
+tags:
+  - "2019"
+solution:
+  path: writeup.md
+  state: hidden
+state: visible

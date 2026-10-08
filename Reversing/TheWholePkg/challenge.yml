@@ -1,0 +1,24 @@
+version: "0.1"
+name: "The Whole Pkg"
+author: "dmaria"
+category: Reversing
+description: |-
+  # The Whole Pkg
+
+  I've stored all of my wrestling strategies in a state-of-the-art secret vault. I even wrote it in nodeJS, can't get more cutting edge than that!
+
+  Download: [Strategy_Vault-win.exe](https://drive.google.com/file/d/1yaGFNZMDFnyVvT3Srg91W7kSOt0ZVADx/view?usp=sharing)
+attribution: "Written by dmaria for [SunshineCTF 2019](https://ctftime.org/event/767)"
+type: dynamic
+extra:
+  initial: 500
+  decay: 50
+  minimum: 100
+flags:
+  - "sun{n0d3j5_15_7h3_wh0l3_p4ck463}"
+tags:
+  - "2019"
+solution:
+  path: writeup.md
+  state: hidden
+state: visible

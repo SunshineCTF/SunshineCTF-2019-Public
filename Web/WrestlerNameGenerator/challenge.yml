@@ -1,0 +1,23 @@
+version: "0.1"
+name: "Wrestler Name Generator"
+author: "dmaria"
+category: Web
+description: |-
+  # Wrestler Name Generator
+
+  Even better than the Wu-Tang name generator, legend has it that Hulk Hogan used this app to get his name.
+attribution: "Written by dmaria for [SunshineCTF 2019](https://ctftime.org/event/767)"
+type: dynamic
+extra:
+  initial: 500
+  decay: 50
+  minimum: 100
+connection_info: https://wrestlernamegenerator.ctf.hackucf.org
+flags:
+  - "sun{1_l0v3_hulk_7h3_3x73rn4l_3n717y_h064n}"
+tags:
+  - "2019"
+solution:
+  path: writeup.md
+  state: hidden
+state: visible

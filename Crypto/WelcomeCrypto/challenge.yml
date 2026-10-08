@@ -1,0 +1,24 @@
+version: "0.1"
+name: "WelcomeCrypto"
+author: "Loavso"
+category: Crypto
+description: |-
+  # WelcomeCrypto
+
+  ~C8 =39 A?2V8 73J:C 8FG7 AF?JJC2ECP
+
+  DF?LHb=r_>b0%_0520<c8bPN
+attribution: "Written by Loavso for [SunshineCTF 2019](https://ctftime.org/event/767)"
+type: dynamic
+extra:
+  initial: 500
+  decay: 50
+  minimum: 100
+flags:
+  - "sun{w3lC0m3_T0_da_k4g3!}"
+tags:
+  - "2019"
+solution:
+  path: writeup.md
+  state: hidden
+state: visible

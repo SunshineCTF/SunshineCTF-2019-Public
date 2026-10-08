@@ -1,0 +1,21 @@
+version: "0.1"
+name: "TimeWarp"
+author: "Mesaj2000"
+category: Scripting
+description: |-
+  Oh no! A t3mp0ral anoma1y has di5rup7ed the timeline! Y0u'll have to 4nswer the qu3stion5 *before* we ask them!
+attribution: "Written by Mesaj2000 for [SunshineCTF 2019](https://ctftime.org/event/767)"
+type: dynamic
+extra:
+  initial: 500
+  decay: 50
+  minimum: 100
+connection_info: nc ctf.hackucf.org 19201
+flags:
+  - "sun{derotser_enilemit_1001131519}"
+tags:
+  - "2019"
+solution:
+  path: writeup.md
+  state: hidden
+state: visible

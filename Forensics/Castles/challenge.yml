@@ -1,0 +1,23 @@
+version: "0.1"
+name: "Castles"
+author: "snak"
+category: Forensics
+description: |-
+  Challenge Name: Castles
+  Given: [Castles.001](https://drive.google.com/open?id=1gO-f81N8JQVq4umUVkMxwasPDU7BDkZk)
+  Description: The flag might be in another castle.
+  Hint: If you are almost there, someone may have used STEG to HIDE something.
+attribution: "Written by snak for [SunshineCTF 2019](https://ctftime.org/event/767)"
+type: dynamic
+extra:
+  initial: 500
+  decay: 50
+  minimum: 100
+flags:
+  - "flag{7H4NK5_F0R_PL4Y1NG}"
+tags:
+  - "2019"
+solution:
+  path: writeup.md
+  state: hidden
+state: visible

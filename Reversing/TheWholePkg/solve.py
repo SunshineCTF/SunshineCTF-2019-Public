@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import re
 
 with open("Strategy_Vault-win.exe", 'rb') as f:

@@ -1,0 +1,13 @@
+name: sun19-16bitaes
+
+services:
+  aes:
+    build: .
+    image: sun19-16bitaes
+    container_name: sun19-16bitaes
+    restart: unless-stopped
+    ports:
+      - "19401:19401"
+    mem_limit: 256m
+    cpus: 0.5
+    pids_limit: 512

@@ -1,0 +1,27 @@
+version: "0.1"
+name: "Brainmeat"
+author: "aleccoder"
+category: Misc
+description: |-
+  # Brainmeat
+
+  I am having a beef with someone that is so bad I cant even think! He sent me a message but I think he was having a stroke.  Please decipher the message while I beat them up.
+
+  ## Files Included
+  - brainmeat.txt
+attribution: "Written by aleccoder for [SunshineCTF 2019](https://ctftime.org/event/767)"
+type: dynamic
+extra:
+  initial: 500
+  decay: 50
+  minimum: 100
+flags:
+  - "sun{fuck_the-brain#we!got^beef}"
+tags:
+  - "2019"
+files:
+  - brainmeat.txt
+solution:
+  path: writeup.md
+  state: hidden
+state: visible

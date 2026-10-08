@@ -1,0 +1,29 @@
+version: "0.1"
+name: "We Will We Will"
+author: "aleccoder"
+category: Forensics
+description: |-
+  # We Will We Will
+  Hey we found this sd card in one of wrestlers rubix cubes but we can make heads or tails of it. Can take a rock and figure it out.
+
+  *****
+  HINT
+  *****
+  This challenge is possible in the time provided. If your computer is working for more then 20 mins (only took mine 5) you did something wrong. 
+
+  ## Files Included
+  - file.img ([download](https://drive.google.com/file/d/1vs9FxZ-FG228LjzHz3TRvifnyeQNKNYG/view?usp=sharing))
+attribution: "Written by aleccoder for [SunshineCTF 2019](https://ctftime.org/event/767)"
+type: dynamic
+extra:
+  initial: 500
+  decay: 50
+  minimum: 100
+flags:
+  - "SUN{wrasslin}"
+tags:
+  - "2019"
+solution:
+  path: writeup.md
+  state: hidden
+state: visible

@@ -1,0 +1,28 @@
+version: "0.1"
+name: "CB3"
+author: "leviathan"
+category: Crypto
+description: |-
+  # CB3
+
+  The number station has switched codes yet again. This one seems similar to the last cipher used, but we still haven't been able to crack it.
+
+  Here's an example file, crack the cipher and send us the plaintext message.
+
+  NOTE: The flag format will not match the sun{...} format.
+
+  Example file: [download](https://drive.google.com/open?id=1IwhAjoEWepHSvdvqxplJkiOc_uTk5tbe)
+attribution: "Written by leviathan for [SunshineCTF 2019](https://ctftime.org/event/767)"
+type: dynamic
+extra:
+  initial: 500
+  decay: 50
+  minimum: 100
+flags:
+  - "g3rm4n3ncrypt10n"
+tags:
+  - "2019"
+solution:
+  path: writeup.md
+  state: hidden
+state: visible

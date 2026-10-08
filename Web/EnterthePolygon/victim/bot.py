@@ -22,7 +22,7 @@ class Victim(Thread):
 
     def __init__(self):
         Thread.__init__(self)
-        self.driver = webdriver.Remote(command_executor="{0}:{1}".format(PHANTOMJS_HOST, PHANTOMJS_PORT), desired_capabilities=DesiredCapabilities.PHANTOMJS)
+        self.driver = webdriver.Remote(command_executor="http://{0}:{1}".format(PHANTOMJS_HOST, PHANTOMJS_PORT), desired_capabilities=DesiredCapabilities.PHANTOMJS)
         self.flag = "SUN{why_bo0ther_with_ex1f}"
 
 

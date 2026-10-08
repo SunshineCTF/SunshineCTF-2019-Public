@@ -1,0 +1,28 @@
+version: "0.1"
+name: "Smash"
+author: "Winyl"
+category: Reversing
+description: |-
+  # Smash
+
+  We discovered this old CD from the 90s in our attic. It looks like it used to register you to a WWE betting community back in day, but we seem to have lost the access code. Can you get us in?
+
+  ## Files Included
+
+  - WrestleOMania
+attribution: "Written by Winyl for [SunshineCTF 2019](https://ctftime.org/event/767)"
+type: dynamic
+extra:
+  initial: 500
+  decay: 50
+  minimum: 100
+flags:
+  - "sun{Hu1k4MaN1a-ruNs-W1l4-0n-U}"
+tags:
+  - "2019"
+files:
+  - attachments/WrestleOfMania
+solution:
+  path: writeup.md
+  state: hidden
+state: visible

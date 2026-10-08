@@ -1,0 +1,23 @@
+version: "0.1"
+name: "CyberRumble"
+author: "kcolley"
+category: Pwn
+description: |-
+  Hey you! You're a hacker, right? So am I! Or, at least I thought I was. You see, I'm a big fan of The Undertaker, and I was trying to help him out. He's got an upcoming Hell in a Cell match against Mankind. I wrote some malware I named Undertaker C2 and infected the computers of Mankind's manager with it. The problem is that I accidentally used an old version of this malware, which was before I tested the code and got the bugs worked out. So none of the functionality seems to work! I also lost the source code for this malware. I'm in a real bind, because I need to get information off of that computer to see what Mankind is planning. Here's the malware implant I placed on his computer, please see if you can use it to retrieve any useful information!
+attribution: "Written by kcolley for [SunshineCTF 2019](https://ctftime.org/event/767)"
+type: dynamic
+extra:
+  initial: 500
+  decay: 50
+  minimum: 100
+connection_info: nc ctf.hackucf.org 19002
+flags:
+  - "sun{the chair and thumbtacks are ready, but the roof is a little loose}"
+tags:
+  - "2019"
+files:
+  - ../../publish/Pwn/CyberRumble/CyberRumble
+solution:
+  path: writeup.md
+  state: hidden
+state: visible
