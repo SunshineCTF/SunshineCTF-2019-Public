@@ -36,7 +36,7 @@ DEBUG = False
 
 
 
-APPROVED_SIGNER = ['nginx', '127.0.0.1', 'img.sunshinectf.org', '3.93.243.67'] # change this to the external ip address for nginx
+APPROVED_SIGNER = ['nginx', '127.0.0.1', 'enterthepolygon.ctf.hackucf.org'] # hosts whose content may be used to sign the admin JWT
 
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login'

@@ -1,17 +1,22 @@
-version: '3.7'
+name: sun19-enterthepolygon
 
 services:
   db:
     image: postgres:10.1-alpine
+    restart: unless-stopped
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
     volumes:
       - postgres_data:/var/lib/postgresql/data/
+    mem_limit: 512m
+    cpus: 1.0
+    pids_limit: 512
 
   web:
     build: .
+    restart: unless-stopped
     command: gunicorn exif.wsgi:application --bind 0.0.0.0:8000
     volumes:
-      - ./exif/:/usr/src/exif/
-      - ./victim/:/usr/src/victim/
       - media_data:/usr/src/exif/media
     expose:
       - 8000
@@ -31,39 +36,49 @@ services:
     depends_on:
       - db
       - rabbitmq
+    mem_limit: 512m
+    cpus: 1.0
+    pids_limit: 512
 
   nginx:
     build: ./nginx
+    restart: unless-stopped
     ports:
-      - 19008:80
+      - "127.0.0.1:19303:80"
     depends_on:
       - web
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
       - media_data:/usr/src/exif/media
+    mem_limit: 512m
+    cpus: 1.0
+    pids_limit: 512
 
-#  https://hub.docker.com/r/anapsix/alpine-java/
   phantomjs:
     image: wernight/phantomjs
-    container_name: phantomjs
-    restart: always
-    ports:
+    container_name: sun19-etp-phantomjs
+    restart: unless-stopped
+    expose:
       - 8910
     command: "phantomjs --webdriver=8910 --ignore-ssl-errors=true --ssl-protocol=any"
     environment:
       - DEFAULT_USER=pontifex
       - DEFAULT_PASSWORD=apexlegends?
+    mem_limit: 512m
+    cpus: 1.0
+    pids_limit: 512
 
   rabbitmq:
+    build: ./rabbitmq
+    restart: unless-stopped
     environment:
       - RABBITMQ_ERLANG_COOKIE='secret_cookie'
-    image: "rabbitmq:3-management"
-    ports:
-      - 15672
+    expose:
       - 5672
-    volumes:
-      - ./rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
-    command:  "rabbitmq-server"
+      - 15672
+    command: "rabbitmq-server"
+    mem_limit: 512m
+    cpus: 1.0
+    pids_limit: 512
 
 volumes:
   postgres_data:

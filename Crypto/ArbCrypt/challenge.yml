@@ -1,0 +1,20 @@
+version: "0.1"
+name: "ArbCrypt"
+author: "Mesaj2000"
+category: Crypto
+description: |-
+  It's pretty ARB-itrary. France0110.
+
+  * [ciphertext.txt](/files/sun/19/Crypto/ArbCrypt/ciphertext.txt)
+attribution: "Written by Mesaj2000 for [SunshineCTF 2019](https://ctftime.org/event/767)"
+type: standard
+value: 125
+flags:
+  - "sun{arb_you_happy_to_see_me_1001130519}"
+tags:
+  - "sunshinectf-2019"
+  - "intermediate"
+solution:
+  path: writeup.md
+  state: hidden
+state: visible

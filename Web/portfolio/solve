@@ -1,3 +1,3 @@
 #!/bin/bash
 
-curl http://archive.sunshinectf.org:19009/render --data "template=hello/{{config}}"
+curl http://localhost:19304/render --data "template=hello/{{config}}"

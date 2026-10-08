@@ -1,0 +1,13 @@
+name: sun19-wrestlerbook
+
+services:
+  wrestlerbook:
+    build: .
+    image: sun19-wrestlerbook
+    container_name: sun19-wrestlerbook
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:19301:80"
+    mem_limit: 256m
+    cpus: 0.5
+    pids_limit: 512

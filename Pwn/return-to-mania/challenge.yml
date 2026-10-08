@@ -1,0 +1,23 @@
+version: "0.1"
+name: "return-to-mania"
+author: "bambu"
+category: Pwn
+description: |-
+  # Return To Mania
+
+  To celebrate her new return to wrestling, Captn Overflow authored this challenge to enter the ring.
+
+  * [return-to-mania](/files/sun/19/Pwn/return-to-mania/return-to-mania)
+attribution: "Written by bambu for [SunshineCTF 2019](https://ctftime.org/event/767)"
+type: standard
+value: 75
+connection_info: nc ctf.hackucf.org 19001
+flags:
+  - "sun{0V3rfl0w_rUn_w!Ld_br0th3r}"
+tags:
+  - "sunshinectf-2019"
+  - "beginner"
+solution:
+  path: writeup.md
+  state: hidden
+state: visible

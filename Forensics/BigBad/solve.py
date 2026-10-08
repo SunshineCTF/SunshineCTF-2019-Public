@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # This only retrieves the sequence. You still have to go through the tree
 # either by hand, or copy it into some digital tree structue to get the flag
 from PIL import Image

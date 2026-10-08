@@ -1,0 +1,20 @@
+version: "0.1"
+name: "Patches' Punches"
+author: "Helithumper"
+category: Reversing
+description: |-
+  That moment when you go for a body slam and you realize you jump too far. Adjust your aim, and you'll crush this challenge!
+
+  * [patches](/files/sun/19/Reversing/patches-punches/patches)
+attribution: "Written by Helithumper for [SunshineCTF 2019](https://ctftime.org/event/767)"
+type: standard
+value: 50
+flags:
+  - "sun{To0HotToHanDleTooColdToHold!}"
+tags:
+  - "sunshinectf-2019"
+  - "beginner"
+solution:
+  path: writeup.md
+  state: hidden
+state: visible

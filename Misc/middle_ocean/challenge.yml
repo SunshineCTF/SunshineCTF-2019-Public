@@ -1,0 +1,28 @@
+version: "0.1"
+name: "middle_ocean"
+author: "aleccoder"
+category: Misc
+description: |-
+  # middle_ocean
+
+  I made a deal with hulch hogan (Hulk Hogan's brother) for a treasure map (below) can you get the treaure for me?
+
+  CMM72222+22
+  CQC52222+22
+  CH9J2222+22
+  9H9M2222+22
+  8PQ42222+22
+  9P4G2222+22
+  8Q572222+22
+attribution: "Written by aleccoder for [SunshineCTF 2019](https://ctftime.org/event/767)"
+type: standard
+value: 75
+flags:
+  - "SUN{M495-f4n!}"
+tags:
+  - "sunshinectf-2019"
+  - "beginner"
+solution:
+  path: writeup.md
+  state: hidden
+state: visible

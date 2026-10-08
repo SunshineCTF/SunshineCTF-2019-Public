@@ -1,70 +1,61 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
+import os
+import re
+import sys
 from PIL import Image, ImageDraw
 import requests
-import re
 
+# `pwnmake check` sets URL to the site root (e.g. http://localhost:19202); the
+# exam endpoint lives at /exam. Accept either form so manual runs still work.
+_BASE = os.environ.get("URL", "http://localhost:19202").rstrip("/")
+URL = _BASE if _BASE.endswith("/exam") else _BASE + "/exam"
+SCANTRON = os.path.join(os.path.dirname(os.path.abspath(__file__)), "source", "static", "scantron.png")
 
-#URL = "http://localhost:19505/exam"
-URL = "http://archive.sunshinectf.org:19005/exam"
-
-# Need requests session because you need cookies to keep track of your progress
+# Need a requests session because cookies track exam progress
 s = requests.Session()
 
 # get first exam
 r = s.get(URL)
 # Complete 10 exams
 for j in range(10):
-    # Pull all html list components into stuff list
-    # this will include the problems and their multiple choice options
+    # Pull all <li> items: the problems and their multiple choice options
     solutions = []
     stuff = re.findall(r'<li>(.+?)</li>', r.text)
 
-    # if you divide the stuff list into lists of 5
-    # you get lists that contain the a problem and 5 answer options
-    # for each problem
+    # Each problem is one <li> followed by 4 answer-option <li> items
     for n in range(20):
-        # extract and solve problem
-        problem = stuff[n*5:n*5+5]
-        ans = str(eval(problem[0].replace("/","//")))
-        # if the solution isn't in the multiple choice options then cry
+        problem = stuff[n * 5:n * 5 + 5]
+        ans = str(eval(problem[0].replace("/", "//")))
         if ans not in problem:
-            print "error"
-            exit()
-        # keep track of the solutions to each problem
-        # 0-3 = A-D
-        solutions.append(problem.index(ans)-1)
+            print("error")
+            sys.exit(1)
+        # 0-3 = A-D (offset by the question <li> at index 0)
+        solutions.append(problem.index(ans) - 1)
 
-    # Open up the original scantron image with Pillow
-    im = Image.open('source/static/scantron.png')
+    # Open the original scantron and bubble in answers
+    im = Image.open(SCANTRON)
     draw = ImageDraw.Draw(im)
 
-    # x and y for question ! bubble A
     startx = 360
     starty = 460
-    # difference between two questions
     height_diff = 90
-    # difference between two bubbles
     width_diff = 70
-    # radius of the bubble
-    r = 30
+    rad = 30
 
-    # for each problem
     for n in range(20):
-        # after problem 9, move over to right column
         if n == 10:
             startx += 490
-        # move down to the right problem
-        y = starty + (n%10)*(height_diff)
-        # fill in the bubble that corresponds to the solution for this problem
+        y = starty + (n % 10) * height_diff
         for i in range(5):
-            x = startx + (i*width_diff)
+            x = startx + (i * width_diff)
             if solutions[n] == i:
-                draw.ellipse((x-r, y-r, x+r, y+r), fill = 'black', outline ='black')
-    #im.show()
-    # save and submit filled out scantron
-    im.save("scantron_filled.png")
-    files = {'file': open('scantron_filled.png','rb')}
+                draw.ellipse((x - rad, y - rad, x + rad, y + rad), fill='black', outline='black')
+
+    im.save("/tmp/scantron_filled.png")
+    files = {'file': open("/tmp/scantron_filled.png", 'rb')}
     r = s.post(URL, files=files)
     if "sun" in r.text:
-        print r.text
-        exit()
+        print(r.text)
+        sys.exit(0)
+
+print(r.text)

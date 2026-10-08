@@ -1,0 +1,16 @@
+name: sun19-wrestlernamegenerator
+
+services:
+  namegen:
+    build:
+      context: .
+      args:
+        FLAG: "sun{1_l0v3_hulk_7h3_3x73rn4l_3n717y_h064n}"
+    image: sun19-namegen
+    container_name: sun19-namegen
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:19302:80"
+    mem_limit: 256m
+    cpus: 0.5
+    pids_limit: 512

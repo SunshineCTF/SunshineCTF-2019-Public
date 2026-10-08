@@ -1,6 +1,3 @@
-DOCKER_IMAGE := 16-bit-aes
-DOCKER_IMAGE_CUSTOM := 1
-DOCKER_PORTS := 19003
-
-# For archive.sunshinectf.org: Publish the port number as port.txt
-$(call publish_port,$(DIR))
+# docker-compose TCP challenge (no build product, so this Build.mk only registers
+# the check). `pwnmake check` starts it, runs the solver, and tears it down.
+$(call ctf_check_tcp,$(DIR),19401,python3 solve.py)

@@ -5,8 +5,8 @@ FROM python:3.7-alpine
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# pillow dependencies  https://github.com/python-pillow/Pillow/issues/1763
-RUN apk add build-base python-dev py-pip jpeg-dev zlib-dev musl-dev postgresql-dev
+# build + pillow + psycopg2 dependencies
+RUN apk add --no-cache build-base jpeg-dev zlib-dev musl-dev postgresql-dev libffi-dev
 
 # set work directory
 WORKDIR /usr/src/exif
@@ -18,8 +18,9 @@ COPY requirements.txt /usr/src/exif
 RUN pip install --upgrade pip
 RUN pip install -r /usr/src/exif/requirements.txt
 
-
-# copy project
-COPY . /usr/src/exif/
+# copy project (exif app -> workdir, victim bot -> /usr/src/victim; replaces the
+# old bind mounts so the stack runs without host path mapping)
+COPY exif/ /usr/src/exif/
+COPY victim/ /usr/src/victim/
 
 ENTRYPOINT ["/usr/src/exif/entrypoint.sh"]

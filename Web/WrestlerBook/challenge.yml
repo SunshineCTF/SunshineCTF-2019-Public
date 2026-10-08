@@ -1,0 +1,21 @@
+version: "0.1"
+name: "WrestlerBook"
+author: "dmaria"
+category: Web
+description: |-
+  # WrestlerBook
+
+  WrestlerBook is the social network for wrestlers, by wrestlers. WrestlerBook is exclusively for wrestlers, so if you didn't get an invite don't even bother trying to view our profiles.
+attribution: "Written by dmaria for [SunshineCTF 2019](https://ctftime.org/event/767)"
+type: standard
+value: 100
+connection_info: https://wrestlerbook.ctf.hackucf.org
+flags:
+  - "sun{ju57_4n07h3r_5ql1_ch4ll}"
+tags:
+  - "sunshinectf-2019"
+  - "beginner"
+solution:
+  path: writeup.md
+  state: hidden
+state: visible

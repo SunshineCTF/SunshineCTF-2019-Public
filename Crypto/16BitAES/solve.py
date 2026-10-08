@@ -1,35 +1,49 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
-from pwn import *
-from Crypto.Cipher import AES
+import os
 import sys
-import time
+import string
+from pwn import remote, context
+try:
+    from Crypto.Cipher import AES
+except ImportError:  # some distros ship pycryptodome under the Cryptodome namespace
+    from Cryptodome.Cipher import AES
+
+context.log_level = "warn"
+
+# Read target from the environment so `pwnmake check` can drive HOST/PORT
+HOST = os.environ.get("HOST") or (sys.argv[1] if len(sys.argv) > 1 else "127.0.0.1")
+PORT = int(os.environ.get("PORT") or (sys.argv[2] if len(sys.argv) > 2 else 19401))
 
 characters = string.ascii_letters + string.digits
+teststring = b'a' * 16
 
-teststring = 'a'*16
-
-r = remote('127.0.0.1', 19003)
-print r.recvuntil('Your text:')
+r = remote(HOST, PORT)
+r.recvuntil(b'Your text: ')
 r.sendline(teststring)
-encrypted = r.recvuntil('key:').split('\n')[1].strip()
 
-print 'Looking for encryption of', teststring, 'that equals', encrypted
+# The server prints the hex ciphertext of our chosen plaintext
+encrypted = r.recvline().strip().decode()
 
-key = None
+# Brute force the 2-character (16-bit) key offline
+found = None
 for i in characters:
-  for j in characters:
-    key = i + j
+    for j in characters:
+        key = (i + j) * 8
+        aes = AES.new(key.encode(), AES.MODE_ECB)
+        if aes.encrypt(teststring).hex() == encrypted:
+            found = key
+            break
+    if found:
+        break
 
-    aes = AES.new(key*8, AES.MODE_ECB)
-    print 'Trying', key, '-', aes.encrypt(teststring).encode('hex')
+assert found, "key not found"
 
-    if aes.encrypt(teststring).encode('hex').strip() == encrypted:
+# Grab the challenge text and send back the correct ciphertext
+r.recvuntil(b'same key: ')
+text = r.recvline().strip()
+r.recvuntil(b'Encrypted: ')
+aes = AES.new(found.encode(), AES.MODE_ECB)
+r.sendline(aes.encrypt(text).hex().encode())
 
-      text = r.recvline().strip()
-      print 'Going to encrypt', text
-      r.sendline(aes.encrypt(text).encode('hex'))
-      print r.recv()
-
-      sys.exit(0)
-
+print(r.recvall(timeout=5).decode(errors="replace"))

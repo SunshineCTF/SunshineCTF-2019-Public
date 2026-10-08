@@ -1,8 +1,3 @@
-DOCKER_IMAGE := wrestlerbook
-DOCKER_IMAGE_CUSTOM := 1
-DOCKER_PORT_ARGS := -p 127.0.0.1:19506:80
-DOCKER_RUN_ARGS := -v /var/run
-
-PUBLISH := port.txt
-
-$(call nginx_conf,$(DIR)/nginx.conf)
+# docker-compose web challenge (PHP/Apache; no build product, so this Build.mk only
+# registers the check). `pwnmake check` starts it, runs the solver, and tears it down.
+$(call ctf_check_web,$(DIR),19301,wrestlerbook.ctf.hackucf.org,python3 solve.py)

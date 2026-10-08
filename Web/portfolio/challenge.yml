@@ -1,0 +1,19 @@
+version: "0.1"
+name: "portfolio"
+author: "dmaria"
+category: Web
+description: |-
+  Check out my development portfolio! I'm just getting started, so don't be too mean :(
+attribution: "Written by dmaria for [SunshineCTF 2019](https://ctftime.org/event/767)"
+type: standard
+value: 125
+connection_info: https://portfolio.ctf.hackucf.org
+flags:
+  - "sun{5l33333p_15_f0r_7h3_w34k}"
+tags:
+  - "sunshinectf-2019"
+  - "intermediate"
+solution:
+  path: writeup.md
+  state: hidden
+state: visible

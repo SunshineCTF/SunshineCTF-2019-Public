@@ -6,8 +6,13 @@ $whitelist = array(
 );
 // if this page is accessed from the web server, the flag is returned
 // flag is in env variable to avoid people using XXE to read the flag
-// REMOTE_ADDR field is able to be spoofed (unless you already are on the server)
-if(in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
+// Grant only for genuine server-internal requests: a loopback source AND one
+// that did NOT come through the public edge proxy (which stamps X-From-Edge).
+// The loopback check alone already separates the intended internal SSRF
+// (127.0.0.1) from external traffic (which arrives from the container gateway);
+// the marker is a second, deployment-independent guard in case the app is ever
+// fronted so that external traffic appears to come from localhost.
+if(in_array($_SERVER['REMOTE_ADDR'], $whitelist) && !isset($_SERVER['HTTP_X_FROM_EDGE'])){
 	echo $_ENV["FLAG"];
 	return;
 }

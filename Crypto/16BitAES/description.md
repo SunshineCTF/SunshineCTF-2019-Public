@@ -2,4 +2,4 @@
 
 Why so small?
 
-`nc archive.sunshinectf.org 19003`
+`nc ctf.hackucf.org 19401`

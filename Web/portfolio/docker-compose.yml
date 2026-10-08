@@ -1,0 +1,13 @@
+name: sun19-portfolio
+
+services:
+  portfolio:
+    build: .
+    image: sun19-portfolio
+    container_name: sun19-portfolio
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:19304:5000"
+    mem_limit: 256m
+    cpus: 0.5
+    pids_limit: 512
