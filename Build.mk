@@ -118,6 +118,11 @@ ctf_check_web_slow = $(eval $(call _ctf_check_impl,$1,$2,$4,$3,$(if $(REMOTE),,d
 #
 #     $(call nginx_service,webhook.ctf.hackucf.org,25304)
 #
+# Several challenges may share one host (e.g. two flags served by one compose
+# stack): the snippet is written once, its recipe defined by the first caller,
+# and every caller's Build.mk is a prerequisite. The same host with a different
+# port is a configuration error and fails the build.
+#
 # Guarded with ifndef so a parent workspace can define its own nginx_service
 # (e.g. a different snippet location) and have it win; each repo still works
 # standalone with this default.
@@ -127,8 +132,17 @@ define _nginx_service
 $(DIR)+NGINX_SNIPPET := $$(PUB_DIR)/nginx/$1.http
 publish-one[$(DIR)]: $$($(DIR)+NGINX_SNIPPET)
 $$($(DIR)+NGINX_SNIPPET): $$($(DIR)+BUILD_MK)
+ifdef nginx_service+PORT[$1]
+ifneq ($$(nginx_service+PORT[$1]),$2)
+$$(error nginx_service: $1 is already routed to port $$(nginx_service+PORT[$1]) by $$(nginx_service+DIR[$1]), so $(DIR) cannot route it to $2)
+endif
+else
+nginx_service+PORT[$1] := $2
+nginx_service+DIR[$1] := $(DIR)
+$$($(DIR)+NGINX_SNIPPET):
 	$$(_V)echo "Publishing nginx snippet $1 -> :$2"
 	$$(_v)mkdir -p $$(@D) && printf '%s %s;\n' '$1' '$2' > $$@
+endif
 endef
 nginx_service = $(eval $(call _nginx_service,$1,$2))
 
