@@ -11,8 +11,7 @@ description: |-
   *****
   This challenge is possible in the time provided. If your computer is working for more then 20 mins (only took mine 5) you did something wrong. 
 
-  ## Files Included
-  - file.img ([download](https://drive.google.com/file/d/1vs9FxZ-FG228LjzHz3TRvifnyeQNKNYG/view?usp=sharing))
+  * [file.img](/files/sun/19/Forensics/we_will_we_will/file.img)
 attribution: "Written by aleccoder for [SunshineCTF 2019](https://ctftime.org/event/767)"
 type: standard
 value: 175

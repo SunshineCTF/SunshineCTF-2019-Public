@@ -7,7 +7,7 @@ description: |-
 
   I've stored all of my wrestling strategies in a state-of-the-art secret vault. I even wrote it in nodeJS, can't get more cutting edge than that!
 
-  Download: [Strategy_Vault-win.exe](https://drive.google.com/file/d/1yaGFNZMDFnyVvT3Srg91W7kSOt0ZVADx/view?usp=sharing)
+  * [Strategy_Vault-win.exe](/files/sun/19/Reversing/TheWholePkg/Strategy_Vault-win.exe)
 attribution: "Written by dmaria for [SunshineCTF 2019](https://ctftime.org/event/767)"
 type: standard
 value: 300

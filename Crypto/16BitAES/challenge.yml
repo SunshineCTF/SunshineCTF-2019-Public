@@ -6,7 +6,7 @@ description: |-
   # 16-bit AES
 
   Why so small?
-attribution: "From [SunshineCTF 2019](https://ctftime.org/event/767)"
+attribution: "Written by SteffeyDev for [SunshineCTF 2019](https://ctftime.org/event/767)"
 type: standard
 value: 125
 connection_info: nc ctf.hackucf.org 19401

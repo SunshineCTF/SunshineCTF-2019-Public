@@ -4,9 +4,11 @@ author: "snak"
 category: Forensics
 description: |-
   Challenge Name: Castles
-  Given: [Castles.001](https://drive.google.com/open?id=1gO-f81N8JQVq4umUVkMxwasPDU7BDkZk)
+  Given: `Castles.001` (a raw disk image)
   Description: The flag might be in another castle.
   Hint: If you are almost there, someone may have used STEG to HIDE something.
+
+  * [Castles.001](/files/sun/19/Forensics/Castles/Castles.001)
 attribution: "Written by snak for [SunshineCTF 2019](https://ctftime.org/event/767)"
 type: standard
 value: 200

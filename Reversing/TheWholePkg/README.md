@@ -6,7 +6,7 @@ Author: David Maria
 This challenge consists of a nodeJS "strategy vault" application that has been compiled into a standalone Windows executable using [pkg](https://github.com/zeit/pkg).
 
 # Deploy
-Just have the Strategy_Vault-win.exe file available for download.
+Just have the Strategy_Vault-win.exe file available for download (kept as `attachments/Strategy_Vault-win.exe.xz`, decompressed by `pwnmake publish`).
 
 # Building
 - Install nodeJS (This was built using v8.11.1)
