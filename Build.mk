@@ -102,5 +102,47 @@ ctf_check_tcp      = $(eval $(call _ctf_check_impl,$1,$2,$3,$$(CTF_REMOTE_HOST),
 ctf_check_tcp_slow = $(eval $(call _ctf_check_impl,$1,$2,$3,$$(CTF_REMOTE_HOST),$(if $(REMOTE),,docker-start-one[$1]),$(if $(REMOTE),https://$$(CTF_REMOTE_HOST),http://localhost:$2),slow,cd $1 && docker compose down >/dev/null 2>&1,ctcp))
 
 # docker-compose web challenge ($4 = remote subdomain): `docker compose up/down`.
-ctf_check_web      = $(eval $(call _ctf_check_impl,$1,$2,$4,$3,$(if $(REMOTE),,docker-start-one[$1]),$(if $(REMOTE),https://$3,http://localhost:$2),,cd $1 && docker compose down >/dev/null 2>&1,web))
-ctf_check_web_slow = $(eval $(call _ctf_check_impl,$1,$2,$4,$3,$(if $(REMOTE),,docker-start-one[$1]),$(if $(REMOTE),https://$3,http://localhost:$2),slow,cd $1 && docker compose down >/dev/null 2>&1,web))
+# Also auto-publishes the nginx routing snippet from its host ($3) + port ($2).
+ctf_check_web      = $(eval $(call _ctf_check_impl,$1,$2,$4,$3,$(if $(REMOTE),,docker-start-one[$1]),$(if $(REMOTE),https://$3,http://localhost:$2),,cd $1 && docker compose down >/dev/null 2>&1,web))$(call nginx_service,$3,$2)
+ctf_check_web_slow = $(eval $(call _ctf_check_impl,$1,$2,$4,$3,$(if $(REMOTE),,docker-start-one[$1]),$(if $(REMOTE),https://$3,http://localhost:$2),slow,cd $1 && docker compose down >/dev/null 2>&1,web))$(call nginx_service,$3,$2)
+
+#####
+# nginx_service($1: host, $2: port) — publish a web challenge's nginx routing
+# snippet. On `pwnmake publish` this writes publish/nginx/<host>.http containing
+# "<host> <port>;", the one-line Host->port map entry the smart proxy routes by;
+# the deploy step collects publish/nginx/*.http into /etc/nginx/ctf-hosts/. The
+# port then lives in exactly one place (the challenge's
+# Build.mk) instead of a hand-kept fragment, and the snippet regenerates whenever
+# that Build.mk changes. ctf_check_web calls this automatically from its host+port;
+# a web challenge with no (or a commented-out) check calls it itself:
+#
+#     $(call nginx_service,webhook.ctf.hackucf.org,25304)
+#
+# Guarded with ifndef so a parent workspace can define its own nginx_service
+# (e.g. a different snippet location) and have it win; each repo still works
+# standalone with this default.
+#####
+ifndef nginx_service
+define _nginx_service
+$(DIR)+NGINX_SNIPPET := $$(PUB_DIR)/nginx/$1.http
+publish-one[$(DIR)]: $$($(DIR)+NGINX_SNIPPET)
+$$($(DIR)+NGINX_SNIPPET): $$($(DIR)+BUILD_MK)
+	$$(_V)echo "Publishing nginx snippet $1 -> :$2"
+	$$(_v)mkdir -p $$(@D) && printf '%s %s;\n' '$1' '$2' > $$@
+endef
+nginx_service = $(eval $(call _nginx_service,$1,$2))
+
+# nginx_trust_xff($1: host) — opt-in for a web challenge whose app must trust the
+# client-supplied X-Forwarded-For verbatim (as a challenge mechanic), instead of the
+# real client IP the smart proxy would otherwise pass. Publishes publish/nginx/<host>.xff
+# next to the .http; the deploy step collects both. Call it alongside the challenge's
+# ctf_check_web / nginx_service, e.g. $(call nginx_trust_xff,homesweethome.ctf.hackucf.org).
+define _nginx_trust_xff
+$(DIR)+NGINX_XFF := $$(PUB_DIR)/nginx/$1.xff
+publish-one[$(DIR)]: $$($(DIR)+NGINX_XFF)
+$$($(DIR)+NGINX_XFF): $$($(DIR)+BUILD_MK)
+	$$(_V)echo "Publishing nginx xff snippet $1 (trusts client X-Forwarded-For)"
+	$$(_v)mkdir -p $$(@D) && printf '%s %s;\n' '$1' '$$$$http_x_forwarded_for' > $$@
+endef
+nginx_trust_xff = $(eval $(call _nginx_trust_xff,$1))
+endif
