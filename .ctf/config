@@ -7,8 +7,6 @@ access_token =
 [challenges]
 Crypto/16BitAES =
 Crypto/ArbCrypt =
-Crypto/CB1 =
-Crypto/CB3 =
 Crypto/WelcomeCrypto =
 Forensics/BigBad =
 Forensics/Castles =
